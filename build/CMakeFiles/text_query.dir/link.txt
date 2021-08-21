@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/text_query.dir/src/text_query.cc.o CMakeFiles/text_query.dir/src/query_result.cc.o CMakeFiles/text_query.dir/src/main.cc.o -o text_query 
