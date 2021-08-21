@@ -1,3 +1,0 @@
-/root/text-query/build/CMakeFiles/rebuild_cache.dir
-/root/text-query/build/CMakeFiles/edit_cache.dir
-/root/text-query/build/CMakeFiles/text_query.dir
