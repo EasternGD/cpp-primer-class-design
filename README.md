@@ -1,3 +1,3 @@
 # Text Query
 Implement C++ Primer 12.3. Text-Query Program.
-![Class (1)](https://user-images.githubusercontent.com/36698746/130318811-f3a21ba4-4102-46fd-a236-66997dec2ca5.png)
+![Class](https://user-images.githubusercontent.com/36698746/130319004-8f4b679a-a87f-4d9a-9d1e-b5af6418960b.png)
