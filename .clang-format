@@ -1,60 +1,296 @@
 ---
+# ------------------------------------------------------------------------------
+# [Basic]
+# ------------------------------------------------------------------------------
 BasedOnStyle: LLVM
 
 # Allow double brackets such as std::vector<std::vector<int>>.
 Standard: Cpp11
 
-SortIncludes: false
+# Sort include list
+SortIncludes: true
+SortUsingDeclarations: true
+
+IncludeBlocks: Regroup
+
+#include "b.h"               into      #include "a.h"
+                                       #include "b.h"
+#include <lib/main.h>
+#include "a.h"                         #include <lib/main.h>
 
 # Keep lines under 160 columns long.
-ColumnLimit: 160
+ColumnLimit: 80
 
-# Always break before braces
-BreakBeforeBraces: Custom
-BraceWrapping:
-  AfterClass: false
-  AfterControlStatement: true
-  AfterEnum: true
-  AfterFunction: true
-  AfterNamespace: true
-  AfterStruct: false
-  AfterUnion: false
-  BeforeCatch: true
-  BeforeElse: true
-  IndentBraces: false
-  SplitEmptyFunction: false
-  SplitEmptyRecord: false
-  SplitEmptyNamespace: false
-
-  # Keeps extern "C" blocks unindented.
-  AfterExternBlock: false
-
-# Indent case labels.
-IndentCaseLabels: true
 
 # Right-align pointers and references
 PointerAlignment: Left
 
-# ANGLE likes to align things as much as possible.
-AlignOperands: true
-AlignConsecutiveAssignments: true
+# ------------------------------------------------------------------------------
+# [Space]
+# ------------------------------------------------------------------------------
+SpaceAfterCStyleCast: true
 
-# Use 2 space negative offset for access modifiers
-AccessModifierOffset: -2
+# true:                                  false:
+# (int) i;                       vs.     (int)i;
 
-# TODO(jmadill): Decide if we want this on. Doesn't have an "all or none" mode.
-AllowShortBlocksOnASingleLine: false
-AllowShortCaseLabelsOnASingleLine: true
-AllowShortFunctionsOnASingleLine: Empty
-AllowShortIfStatementsOnASingleLine: true
-AllowShortLoopsOnASingleLine: true
+SpaceBeforeCpp11BracedList: true
+# true:                                  false:
+# Foo foo { bar };               vs.     Foo foo{ bar };
+# Foo {};                                Foo{};
+# vector<int> { 1, 2, 3 };               vector<int>{ 1, 2, 3 };
+# new int[3] { 1, 2, 3 };                new int[3]{ 1, 2, 3 };
 
-ColumnLimit:	80
+SpacesBeforeTrailingComments: 1
 
-# Useful for spacing out functions in classes
+# // text..
+# //text...
+
+# ------------------------------------------------------------------------------
+# [Indent]
+# ------------------------------------------------------------------------------
+IndentWidth: 4
+AccessModifierOffset: -4
+
+# class A {
+# public:
+# ----void foo() {}
+# };
+
+# ContinuationIndentWidth
+
+Cpp11BracedListStyle: true
+
+# true:                                  false:
+# vector<int> x{1, 2, 3, 4};     vs.     vector<int> x{ 1, 2, 3, 4 };
+# vector<T> x{{}, {}, {}, {}};           vector<T> x{ {}, {}, {}, {} };
+# f(MyMap[{composite, key}]);            f(MyMap[{ composite, key }]);
+# new int[3]{1, 2, 3};                   new int[3]{ 1, 2, 3 };
+
+IndentCaseLabels: true
+
+# false:                                 true:
+# switch (fool) {                vs.     switch (fool) {
+# case 1:                                    case 1:
+#     bar();                                     bar();
+#     break;                                     break;
+# default:                                   default:
+#     plop();                                    plop();
+# }                                      }
+IndentPPDirectives: BeforeHash
+
+#if FOO
+  #if BAR
+    #include <foo>
+  #endif
+#endif
+
 KeepEmptyLinesAtTheStartOfBlocks: true
 
-# Indent nested PP directives.
-IndentPPDirectives: AfterHash
+# true:                                  false:
+# if (foo) {                     vs.     if (foo) {
+#                                          bar();
+#   bar();                               }
+# }
+
+MaxEmptyLinesToKeep: 1
+
+# MaxEmptyLinesToKeep: 1         vs.     MaxEmptyLinesToKeep: 0
+# int f() {                              int f() {
+#   int = 1;                                 int i = 1;
+#                                            i = foo();
+#   i = foo();                               return i;
+#                                       }
+#   return i;
+# }
+
+# ------------------------------------------------------------------------------
+# [Align]
+# ------------------------------------------------------------------------------
+AlignOperands: true
+
+# int aaa = bbbbbbbbbbbbbbb
+#           + ccccccccccccccc;
+          
+AlignConsecutiveAssignments: true
+
+# int a            = 1;
+# int somelongname = 2;
+# double c         = 3;
+
+AlignConsecutiveBitFields: true
+
+# int aaaa : 1;
+# int b    : 12;
+# int ccc  : 8;
+
+
+AlignConsecutiveDeclarations: true
+
+# int         aaaa = 12;
+# float       b = 23;
+# std::string ccc;
+
+AlignConsecutiveMacros: true
+
+#define SHORT_NAME       42
+#define LONGER_NAME      0x007f
+#define EVEN_LONGER_NAME (2)
+#define foo(x)           (x * x)
+#define bar(y, z)        (y + z)
+
+
+AlignEscapedNewlines: Left
+
+# #define A     \
+#     int aaaa; \
+#     int b;    \
+#     int dddddddddd;
+
+AlignTrailingComments: true
+
+# true:                                   false:
+# int a;     // My comment a      vs.     int a; // My comment a
+# int b = 2; // comment  b                int b = 2; // comment about b
+
+
+# ------------------------------------------------------------------------------
+# [One Line Control]
+# ------------------------------------------------------------------------------
+AllowAllConstructorInitializersOnNextLine: false
+
+# MyClass::MyClass() :
+#   member0(0),
+#   member1(2) {}
+
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# void myFunction(int a,
+                # int b,
+                # int c,
+                # int d,
+                # int e);
+                
+AllowShortBlocksOnASingleLine: Always
+AllowShortLoopsOnASingleLine: true
+
+# while (true) {}
+# while (true) { continue; }
+
+AllowShortCaseLabelsOnASingleLine: true
+
+#    true:                                   false:
+#    switch (a) {                    vs.     switch (a) {
+#    case 1: x = 1; break;                   case 1:
+#    case 2: return;                           x = 1;
+#    }                                         break;
+#                                            case 2:
+#                                              return;
+#                                            }
+
+AllowShortEnumsOnASingleLine: true
+
+# enum { A, B } myEnum;
+
+AllowShortFunctionsOnASingleLine: All
+
+# class Foo 
+#   void f() { foo(); }
+# };
+# void f() { bar(); }
+
+AllowShortIfStatementsOnASingleLine: WithoutElse
+
+# if (a) return;
+
+# AND
+
+# if (a)
+#   return ;
+# else {
+#  return;
+# }
+
+AllowShortLambdasOnASingleLine: All
+
+# ------------------------------------------------------------------------------
+# [Break]
+# ------------------------------------------------------------------------------
+AlwaysBreakAfterReturnType: None
+
+# class A {
+#   int f() { return 0; };
+# };
+# int f();
+# int f() { return 1; }
+
+AlwaysBreakBeforeMultilineStrings: false
+
+# true:                                  false:
+# aaaa =                         vs.     aaaa = "bbbb"
+#     "bbbb"                                    "cccc";
+#     "cccc";
+
+AlwaysBreakTemplateDeclarations: Yes
+# template <typename T>
+# T foo() {
+# }
+# template <typename T>
+# T foo(int aaaaaaaaaaaaaaaaaaaaa,
+#      int bbbbbbbbbbbbbbbbbbbbb) {
+#}
+
+BitFieldColonSpacing: After
+
+# unsigned bf: 2;
+
+BinPackParameters: false
+
+# false:
+# void f(int aaaaaaaaaaaaaaaaaaaa,
+#        int aaaaaaaaaaaaaaaaaaaa,
+#        int aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa) {}
+
+BinPackArguments: false
+# false:
+# void f() {
+#   f(aaaaaaaaaaaaaaaaaaaa,
+#     aaaaaaaaaaaaaaaaaaaa,
+#     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa);
+# }
+
+BreakBeforeConceptDeclarations: false
+
+# false:
+# template<typename T> concept ...
+
+BreakBeforeTernaryOperators: true
+
+# veryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongDescription
+#     ? firstValue
+#     : SecondValueVeryVeryVeryVeryLong;
+
 
 BreakConstructorInitializers: BeforeComma
+
+# Constructor()
+#     : initializer1()
+#     , initializer2()
+
+
+BreakInheritanceList: BeforeComma
+
+# class Foo
+#     : Base1
+#     , Base2
+# {};
+
+BreakStringLiterals: true
+
+# true:
+# const char* x = "veryVeryVeryVeryVeryVe"
+#                 "ryVeryVeryVeryVeryVery"
+#                 "VeryLongString";
+
+# ConstructorInitializerAllOnOneLineOrOnePerLine 
+# ConstructorInitializerIndentWidth 
+
