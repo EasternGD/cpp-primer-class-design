@@ -25,25 +25,54 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_C_FLAGS -O2)
 
+
 log("-- CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
 log("-- CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
+
+# ------------------------------------------------------------------------------
+# Google Test Tool
+# ------------------------------------------------------------------------------
+add_subdirectory(lib/googletest)
+enable_testing()
+include_directories(
+    ${gtest_SOURCE_DIR}
+    ${gtest_SOURCE_DIR}/include
+    )
 # ------------------------------------------------------------------------------
 # Text Query
 # ------------------------------------------------------------------------------
-set(TEXT_QUERY src/text-query/text_query.cc
-            src/text-query/query_result.cc
-            src/text-query/test.cc)
+set(
+    TEXT_QUERY 
+    src/text-query/text_query.cc
+    src/text-query/query_result.cc
+    src/text-query/test.cc
+)
 
 add_executable(text_query ${TEXT_QUERY})
+
 target_include_directories(text_query PUBLIC inc/text-query)
+
 log("-- Target: text_query")
 # ------------------------------------------------------------------------------
 # StrBlob
 # ------------------------------------------------------------------------------
-set(STRBLOB src/strblob/strblob.cc 
-            src/strblob/test.cc)
 
-add_executable(strblob ${STRBLOB})
-target_include_directories(strblob PUBLIC inc/strblob)
-log("-- Target: StrBlob")
+set(
+    STRBLOB_TEST 
+    src/strblob/strblob.cc
+    tests/strblob_test.cc
+)
+
+add_executable(strblob_test ${STRBLOB_TEST})
+
+target_link_libraries(
+    strblob_test
+    gtest
+    gtest_main
+)
+
+target_include_directories(strblob_test PUBLIC inc/strblob)
+
+add_test(strblob_test strblob_test)
+log("-- Target: strblob_test")
 # ------------------------------------------------------------------------------

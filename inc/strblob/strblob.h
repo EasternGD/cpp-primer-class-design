@@ -69,7 +69,6 @@ public:
         : wptr(a.data)
         , curr(sz) {}
 
-    string&     deref() const;
     StrBlobPtr& operator++();
     string&     operator*();
     bool        operator!=(const StrBlobPtr& rhs);
