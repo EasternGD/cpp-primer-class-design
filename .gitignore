@@ -31,5 +31,14 @@
 *.out
 *.app
 
+# Shell
+*.sh
+
+# Core Dump File
+core*
+
+
+# Build File
 build/
 .cache/
+

@@ -23,7 +23,7 @@ project(text-query VERSION 1.0)
 # Set CXXFLAGS
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_C_FLAGS -O2)
+# set(CMAKE_CXX_FLAGS -O3)
 
 
 log("-- CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
@@ -51,6 +51,7 @@ set(
 add_executable(text_query ${TEXT_QUERY})
 
 target_include_directories(text_query PUBLIC inc/text-query)
+target_compile_options(text_query PRIVATE "-g")
 
 log("-- Target: text_query")
 # ------------------------------------------------------------------------------
@@ -76,3 +77,26 @@ target_include_directories(strblob_test PUBLIC inc/strblob)
 add_test(strblob_test strblob_test)
 log("-- Target: strblob_test")
 # ------------------------------------------------------------------------------
+# HasPtr
+# ------------------------------------------------------------------------------
+set(
+    HASPTR_TEST 
+    src/hasptr/hasptr.cc
+    tests/hasptr_test.cc
+)
+
+add_executable(hasptr_test ${HASPTR_TEST})
+
+target_link_libraries(
+    hasptr_test
+    gtest
+    gtest_main
+)
+
+target_include_directories(hasptr_test PUBLIC inc/hasptr)
+target_compile_options(hasptr_test PRIVATE "-g")
+
+add_test(hasptr_test hasptr_test)
+log("-- Target: hasptr_test")
+# --------------------------------------------
+
