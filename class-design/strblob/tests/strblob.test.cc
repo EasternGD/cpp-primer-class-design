@@ -1,7 +1,6 @@
-#include "strblob.h"
-
 #include <gtest/gtest.h>
 #include <iostream>
+#include <libstrblob/strblob.h>
 
 using std::cerr;
 using std::cin;

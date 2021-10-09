@@ -1,7 +1,6 @@
-#include "hasptr.h"
-
 #include <gtest/gtest.h>
 #include <iostream>
+#include <libhasptr/hasptr.h>
 
 using std::cerr;
 using std::cin;
