@@ -8,5 +8,5 @@ Implement C++ Primer class instance and use google test make some simple unit te
 ## StrBlob
 ![StrBlob](https://user-images.githubusercontent.com/36698746/132375583-89905a52-8a51-4e0a-bce9-567d886e9435.png)
 
-
-
+## HasPtr
+![HasPtr drawio](https://user-images.githubusercontent.com/36698746/136652370-ea55467a-73ed-4384-8272-355c4802a03e.png)
