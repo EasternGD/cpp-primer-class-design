@@ -49,7 +49,7 @@ SpacesBeforeTrailingComments: 1
 # [Indent]
 # ------------------------------------------------------------------------------
 IndentWidth: 4
-AccessModifierOffset: -4
+AccessModifierOffset: -2
 
 # class A {
 # public:
@@ -258,7 +258,7 @@ BinPackArguments: false
 #     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa);
 # }
 
-BreakBeforeConceptDeclarations: false
+# BreakBeforeConceptDeclarations: false
 
 # false:
 # template<typename T> concept ...
