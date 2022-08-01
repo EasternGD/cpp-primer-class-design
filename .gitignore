@@ -32,7 +32,7 @@
 *.app
 
 # Shell
-*.sh
+# *.sh
 
 # Core Dump File
 core*
@@ -46,8 +46,6 @@ build/
 # vscode
 .vscode/
 
-# debug script
-*.txt
 
 
 
