@@ -35,10 +35,10 @@ function main(){
         -DCMAKE_CXX_COMPILER=/usr/bin/g++ 
 
     if [ $INSTALL -eq 0 ]; then 
-        cmake --build ${BASE_DIR}/build/class-design/text-query
+        cmake --build ${BASE_DIR}/build/class-design
     else
-        cmake --build ${BASE_DIR}/build/googletest
-        cmake --install ${BASE_DIR}/build/googletest
+        cmake --build ${BASE_DIR}/build/googletest --target install
+        cmake --build ${BASE_DIR}/build/class-design --target install
     fi
 
 }
