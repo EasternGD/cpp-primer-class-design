@@ -1,4 +1,4 @@
-#include "query_result.h"
+#include <text-query/query-result.hpp>
 
 void QueryResult::dump(ostream& output)
 {

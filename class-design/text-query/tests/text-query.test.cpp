@@ -1,6 +1,6 @@
 #include <iostream>
-#include <libtext-query/query_result.h>
-#include <libtext-query/text_query.h>
+#include <text-query/query-result.hpp>
+#include <text-query/text-query.hpp>
 
 using std::cin;
 using std::cout;

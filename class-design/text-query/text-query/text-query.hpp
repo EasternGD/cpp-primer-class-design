@@ -11,7 +11,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
-#include "query_result.h"
+#include <text-query/query-result.hpp>
 
 using std::ifstream;
 using std::map;

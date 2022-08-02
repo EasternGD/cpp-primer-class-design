@@ -35,7 +35,7 @@ function main(){
         -DCMAKE_CXX_COMPILER=/usr/bin/g++ 
 
     if [ $INSTALL -eq 0 ]; then 
-        echo "wait";
+        cmake --build ${BASE_DIR}/build/class-design/text-query
     else
         cmake --build ${BASE_DIR}/build/googletest
         cmake --install ${BASE_DIR}/build/googletest

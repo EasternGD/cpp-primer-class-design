@@ -1,4 +1,4 @@
-#include "text_query.h"
+#include <text-query/text-query.hpp>
 
 using std::cerr;
 using std::cin;
