@@ -44,18 +44,17 @@ TEST(HasPtrTest, TestSwap) {
 
 TEST(HasPtrTest, TestCmpOpt) {
     // ex 13.31
-    string ex_str = "Give your class a < operator and define a vector of "
-                    "HasPtrs. Give that vector some elements and then the "
-                    "vector. Note when swap is called.";
+    string ex_str = "a ab abc abcd abcde abcdef abcdefg";
     istringstream  iss(ex_str);
     vector<HasPtr> v;
 
     string word;
     while (iss >> word) v.push_back(word);
-    sort(v.begin(), v.end());
 
     for (auto it = v.begin(); it != v.end(); it++) {
-        if (it != --v.end()) { EXPECT_EQ(1, *it->ps() < *(++it)->ps()); }
+        if (it != --v.end()) { 
+            EXPECT_EQ(1, *it->ps() < *(it + 1)->ps()); 
+        }
     }
 }
 
