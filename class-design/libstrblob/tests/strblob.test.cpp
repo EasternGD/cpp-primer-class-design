@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include <libstrblob/strblob.h>
+#include <libstrblob/strblob.hpp>
 
 using std::cerr;
 using std::cin;
 using std::cout;
 using std::endl;
 
-TEST(testCase, test_list_init) {
+TEST(TestCase, TestListInit) {
     StrBlob obj {"1", "2", "3"};
     ASSERT_EQ(obj.size(), 3);
     auto it = StrBlobPtr(obj, 0);
@@ -16,7 +16,7 @@ TEST(testCase, test_list_init) {
     ASSERT_EQ(*(++it), "3");
 }
 
-TEST(testCase, test_push_back) {
+TEST(TestCase, TestPushBack) {
     StrBlob obj;
     for (int i = 0; i < 100; i++) {
 
@@ -26,7 +26,7 @@ TEST(testCase, test_push_back) {
     }
 }
 
-TEST(testCase, ranged_based_for_loop) {
+TEST(TestCase, RangeBasedForLoop) {
     StrBlob obj {"0", "1", "2", "3", "4"};
     int     target = 0;
     for (auto i : obj) {

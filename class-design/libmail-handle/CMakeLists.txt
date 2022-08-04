@@ -33,12 +33,12 @@ install(TARGETS ${TARGET} DESTINATION lib)
 # test ------------------------------------------------------------------------
 
 find_package(mail-handle) 
-clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "MAIL_HANDLE_INCLUDE_DIR=${MAIL_HANDLE_INCLUDE_DIR}")
-clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "MAIL_HANDLE_LIBRARY=${MAIL_HANDLE_LIBRARY}")
+# clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "MAIL_HANDLE_INCLUDE_DIR=${MAIL_HANDLE_INCLUDE_DIR}")
+# clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "MAIL_HANDLE_LIBRARY=${MAIL_HANDLE_LIBRARY}")
 
 if(MAIL_HANDLE_FOUND)
     set(TEST mail-handle.test)
-    clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "build test for libmail-handle")
+    # clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "build test for libmail-handle")
     
     add_executable(${TEST} tests/mail-handle.test.cpp)
     
