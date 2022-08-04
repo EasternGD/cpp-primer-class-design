@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include <libmail-handle/mail_handle.hpp>
+#include <libmail-handle/mail-handle.hpp>
 
 using namespace std;
 

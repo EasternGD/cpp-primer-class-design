@@ -26,15 +26,15 @@ install(
 
 install(TARGETS ${TARGET} DESTINATION lib)
 
-# test
+# test ------------------------------------------------------------------------
 
 find_package(hasptr) 
-clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "HASPTR_INCLUDE_DIR=${HASPTR_INCLUDE_DIR}")
-clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "HASPTR_LIBRARY=${HASPTR_LIBRARY}")
+# clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "HASPTR_INCLUDE_DIR=${HASPTR_INCLUDE_DIR}")
+# clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "HASPTR_LIBRARY=${HASPTR_LIBRARY}")
 
 if(HASPTR_FOUND)
     set(TEST hasptr.test)
-    clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "build test for libhasptr")
+    # clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "build test for libhasptr")
     
     add_executable(${TEST} tests/hasptr.test.cpp)
     
@@ -43,3 +43,5 @@ if(HASPTR_FOUND)
     target_link_libraries(${TEST} ${HASPTR_LIBRARY} gtest)
 else(HASPTR_FOUND)
 endif(HASPTR_FOUND)
+
+# -----------------------------------------------------------------------------

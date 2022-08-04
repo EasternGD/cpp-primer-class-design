@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------
-#include <libmail-handle/mail_handle.hpp>
+#include <libmail-handle/mail-handle.hpp>
 
 // ----------------------------------------------------------------------------
 void Folder::AddMsg(Message* msg) { msg_list_.insert(msg); }
