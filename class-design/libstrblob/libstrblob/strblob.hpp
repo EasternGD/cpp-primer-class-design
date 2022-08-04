@@ -25,6 +25,7 @@ class StrBlob {
 public:
     using size_type = vector<string>::size_type;
 
+    ///< copy constructor
     StrBlob()
         : data(make_shared<vector<string>>()) {}
 
