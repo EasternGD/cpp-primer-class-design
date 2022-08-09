@@ -35,6 +35,27 @@ TEST(TestCase, RangeBasedForLoop) {
     }
 }
 
+TEST(TestCase, TestCopyConstructor) {
+    StrBlob obj {"0", "1", "2", "3", "4"};
+    StrBlob tmp(obj);
+    int     target = 0;
+    for (auto i : tmp) {
+        ASSERT_EQ(i, std::to_string(target));
+        ++target;
+    }
+}
+
+TEST(TestCase, TestCopyAssignmentOperator) {
+    StrBlob obj {"0", "1", "2", "3", "4"};
+    StrBlob tmp = obj;
+    int     target = 0;
+    for (auto i : tmp) {
+        ASSERT_EQ(i, std::to_string(target));
+        ++target;
+    }
+}
+
+
 int main(int argc, char* argv[]) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

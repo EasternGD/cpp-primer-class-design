@@ -28,20 +28,26 @@ install(TARGETS ${TARGET} DESTINATION lib)
 
 # test ------------------------------------------------------------------------
 
-find_package(hasptr) 
+set(TEST hasptr.test)
+add_executable(${TEST} tests/hasptr.test.cpp)
+target_compile_options(${TEST} PRIVATE -g)
+target_include_directories(${TEST} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(${TEST} hasptr gtest)
+
+# find_package(hasptr) 
 # clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "HASPTR_INCLUDE_DIR=${HASPTR_INCLUDE_DIR}")
 # clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "HASPTR_LIBRARY=${HASPTR_LIBRARY}")
 
-if(HASPTR_FOUND)
-    set(TEST hasptr.test)
+# if(HASPTR_FOUND)
+    # set(TEST hasptr.test)
     # clog(${CMAKE_CURRENT_LIST_FILE} ${CMAKE_CURRENT_LIST_LINE} "build test for libhasptr")
     
-    add_executable(${TEST} tests/hasptr.test.cpp)
+#     add_executable(${TEST} tests/hasptr.test.cpp)
     
-    target_compile_options(${TEST} PRIVATE -g)
-    target_include_directories(${TEST} PRIVATE ${HASPTR_INCLUDE_DIR})
-    target_link_libraries(${TEST} ${HASPTR_LIBRARY} gtest)
-else(HASPTR_FOUND)
-endif(HASPTR_FOUND)
+#     target_compile_options(${TEST} PRIVATE -g)
+#     target_include_directories(${TEST} PRIVATE ${HASPTR_INCLUDE_DIR})
+#     target_link_libraries(${TEST} ${HASPTR_LIBRARY} gtest)
+# else(HASPTR_FOUND)
+# endif(HASPTR_FOUND)
 
 # -----------------------------------------------------------------------------

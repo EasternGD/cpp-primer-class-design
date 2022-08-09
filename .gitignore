@@ -36,6 +36,7 @@
 
 # Core Dump File
 core*
+*.stackdump
 
 
 # Build File

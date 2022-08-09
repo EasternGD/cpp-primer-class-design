@@ -22,15 +22,19 @@ class StrBlob {
 
     friend class StrBlobPtr;
 
-public:
+  public:
     using size_type = vector<string>::size_type;
 
-    ///< copy constructor
     StrBlob()
         : data(make_shared<vector<string>>()) {}
 
     StrBlob(std::initializer_list<string> il)
         : data(make_shared<vector<string>>(il)) {}
+
+    ///< Ex. 13.26 copy constructor
+    StrBlob(const StrBlob& rhs): data(make_shared<vector<string>>(*rhs.data)) {  }
+    ///< Ex. 13.26 copy assignment operator
+    StrBlob& operator=(const StrBlob& rhs);
 
     size_type size() const { return data->size(); }
 
@@ -48,33 +52,34 @@ public:
     const std::string& front() const;
     const std::string& back() const;
 
-private:
+  private:
     void check(size_type i, const string& msg) const {
         if (i >= data->size()) throw std::out_of_range(msg);
     }
 
-private:
+  private:
     std::shared_ptr<vector<string>> data;
 };
 
 class StrBlobPtr {
-private:
+  private:
     weak_ptr<vector<string>> wptr;
     size_t                   curr;
 
-public:
+  public:
     StrBlobPtr()
         : curr(0) {}
 
     StrBlobPtr(StrBlob& a, size_t sz = 0)
         : wptr(a.data)
         , curr(sz) {}
+    
 
     StrBlobPtr& operator++();
     string&     operator*();
     bool        operator!=(const StrBlobPtr& rhs);
 
-private:
+  private:
     shared_ptr<vector<string>> check(size_t, const string&) const;
 };
 #endif

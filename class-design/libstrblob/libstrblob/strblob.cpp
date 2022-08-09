@@ -73,3 +73,9 @@ shared_ptr<vector<string>> StrBlobPtr::check(size_t        sz,
     return ret;
 }
 // ----------------------------------------------------------------------------
+
+StrBlob& StrBlob::operator=(const StrBlob& rhs) {
+    this->data = make_shared<vector<string>>(*rhs.data);
+    return *this;
+}
+// ----------------------------------------------------------------------------

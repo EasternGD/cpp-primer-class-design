@@ -37,33 +37,36 @@ class HasPtr {
     }
 
     ///< Ex. 13.8 deep copy
-    HasPtr& operator=(const HasPtr& rhs) {
-
-        ///< Ex. 13.22 remove the condition
-        // if (this != &rhs) {
-        string* tmp_ps = new string(*rhs.ps_);
-        delete ps_;
-        ps_ = tmp_ps;
-        i_  = rhs.i_;
-        // }
-
-        return *this;
-    }
-
     // HasPtr& operator=(const HasPtr& rhs) {
 
-    //     ++*rhs.use_;
-    //     if (--*use_ == 0) {
-    //         delete ps_;
-    //         delete use_;
-    //     }
-
-    //     this->ps_  = rhs.ps_;
-    //     this->i_   = rhs.i_;
-    //     this->use_ = rhs.use_;
+    ///< Ex. 13.22 remove the condition
+    // if (this != &rhs) {
+    // string* tmp_ps = new string(*rhs.ps_);
+    // delete ps_;
+    // ps_ = tmp_ps;
+    // i_  = rhs.i_;
+    // }
 
     //     return *this;
     // }
+
+    HasPtr& operator=(const HasPtr& rhs) {
+
+        ++*rhs.use_;
+        if (--*use_ == 0) {
+            delete use_;
+            delete ps_;
+
+            use_ = nullptr;
+            ps_  = nullptr;
+        }
+
+        this->ps_  = rhs.ps_;
+        this->i_   = rhs.i_;
+        this->use_ = rhs.use_;
+
+        return *this;
+    }
 
     bool operator<(const HasPtr& rhs) { return *this->ps_ < *rhs.ps_; }
 
@@ -83,6 +86,9 @@ class HasPtr {
         if (*use_ == 0) {
             delete use_;
             delete ps_;
+
+            use_ = nullptr;
+            ps_  = nullptr;
         }
         --*use_;
     }
