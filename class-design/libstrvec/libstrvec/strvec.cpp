@@ -51,6 +51,9 @@ void StrVec::CheckAndAllocate() {
 // ----------------------------------------------------------------------------
 
 void StrVec::reserve(const size_t& n) {
+
+    if (n < capacity()) { return; }
+
     auto new_data = allocator_.allocate(n);
     auto dest     = new_data;
     auto element  = elements_;
@@ -62,6 +65,23 @@ void StrVec::reserve(const size_t& n) {
     elements_   = new_data;
     first_free_ = dest;
     cap_        = elements_ + n;
+}
+
+// ----------------------------------------------------------------------------
+void StrVec::resize(const size_t& n, const string& init) {
+
+    if (n > size()) {
+        if (n > capacity()) { reserve(2 * n); }
+        for (auto i = size(); i < n; ++i) {
+            allocator_.construct(first_free_++, init);
+        }
+    } else if (n == size()) {
+        // do nothing.
+    } else if (n < size()) {
+        while(first_free_ != elements_ + n){
+            allocator_.destroy(--first_free_);
+        }
+    }
 }
 
 // ----------------------------------------------------------------------------

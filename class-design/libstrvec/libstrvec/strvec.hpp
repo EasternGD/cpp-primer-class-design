@@ -35,10 +35,11 @@ class StrVec {
 
     StrVec& operator=(const StrVec& rhs);
 
-    // string& operator[](const int& n) {
-    //     if (n >= size()) throw std::out_of_range("out of range");
-    //     return *(elements_ + n);
-    // }
+    string& operator[](const int& n) {
+        if (n >= size()) throw std::out_of_range("out of range");
+        return *(elements_ + n);
+    }
+    
     string& back() { return *(elements_ + size() - 1); }
 
     std::string* begin() const { return elements_; }
@@ -49,6 +50,8 @@ class StrVec {
 
     void push_back(const string& element);
     void reserve(const size_t& n);
+    void resize(const size_t& n, const string& init = string());
+
 };
 
 // ----------------------------------------------------------------------------
